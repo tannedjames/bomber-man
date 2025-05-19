@@ -1,0 +1,72 @@
+Bomberman Game Entity Inheritance Tree
+=====================================
+
+Base Entity Types (from FXGL)
+----------------------------
+Entity (com.almasb.fxgl.entity.Entity)
+    ├── Component (com.almasb.fxgl.entity.component.Component)
+    │   ├── PhysicsComponent
+    │   ├── CollidableComponent
+    │   └── IrremovableComponent
+
+Game Entities
+------------
+1. Static Entities (Environment)
+   ├── Wall
+   ├── Brick
+   │   └── BrickBreak
+   ├── Door
+   └── Background
+
+2. Dynamic Entities
+   ├── Player
+   │   └── PlayerComponent
+   │       └── PlayerSkin (NORMAL, GOLD)
+   │
+   ├── Enemy (Abstract)
+   │   ├── Enemy1
+   │   ├── Enemy2 (Chases player when close)
+   │   ├── Enemy3 (Splits into Enemy1 when hit)
+   │   ├── Enemy4
+   │   └── Enemy5 (Fastest chaser)
+   │
+   ├── Bomb
+   │   ├── VirtualBomb
+   │   └── BombComponent
+   │
+   ├── Flame
+   │   ├── CentralFlame
+   │   ├── TopDownFlame
+   │   ├── TopUpFlame
+   │   ├── TopRightFlame
+   │   ├── TopLeftFlame
+   │   ├── UpFlame
+   │   ├── DownFlame
+   │   ├── LeftFlame
+   │   ├── RightFlame
+   │   └── FlameComponent
+   │
+   └── Powerups
+       ├── PowerupFlames
+       ├── PowerupBombs
+       ├── PowerupSpeed
+       ├── PowerupFlamepass
+       └── PowerupLife
+
+State System
+-----------
+DynamicEntityState.State
+├── UP
+├── RIGHT
+├── DOWN
+├── LEFT
+├── STOP
+└── DIE
+
+Notes:
+- All entities inherit from FXGL's base Entity class
+- Components are used to add specific behaviors to entities
+- Enemies have different behaviors and movement patterns
+- Flame entities represent different parts of bomb explosions
+- Powerups provide various player enhancements
+- The state system manages entity movement and status 
